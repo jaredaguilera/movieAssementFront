@@ -3,5 +3,104 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "movieAssessmentClient": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/movie-assessment-client",
+      "sourceRoot": "projects/movie-assessment-client/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/movie-assessment-client",
+            "index": "projects/movie-assessment-client/src/index.html",
+            "main": "projects/movie-assessment-client/src/main.ts",
+            "polyfills": "projects/movie-assessment-client/src/polyfills.ts",
+            "tsConfig": "projects/movie-assessment-client/tsconfig.app.json",
+            "assets": [
+              "projects/movie-assessment-client/src/favicon.ico",
+              "projects/movie-assessment-client/src/assets"
+            ],
+            "styles": [
+              "projects/movie-assessment-client/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/movie-assessment-client/src/environments/environment.ts",
+                  "with": "projects/movie-assessment-client/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "movieAssessmentClient:build:production"
+            },
+            "development": {
+              "browserTarget": "movieAssessmentClient:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "movieAssessmentClient:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/movie-assessment-client/src/test.ts",
+            "polyfills": "projects/movie-assessment-client/src/polyfills.ts",
+            "tsConfig": "projects/movie-assessment-client/tsconfig.spec.json",
+            "karmaConfig": "projects/movie-assessment-client/karma.conf.js",
+            "assets": [
+              "projects/movie-assessment-client/src/favicon.ico",
+              "projects/movie-assessment-client/src/assets"
+            ],
+            "styles": [
+              "projects/movie-assessment-client/src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "movieAssessmentClient"
 }
