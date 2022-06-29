@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  basePath: 'http://localhost:8080'
+  basePath: 'https://movieassesmentheroku.herokuapp.com'
 };

@@ -191,7 +191,7 @@ export class MovieAssessmentService {
     public postUsingPOST(idMovie: string, idUser: number, rating: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
     public postUsingPOST(idMovie: string, idUser: number, rating: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
     public postUsingPOST(idMovie: string, idUser: number, rating: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
+        console.log("api res")
         if (idMovie === null || idMovie === undefined) {
             throw new Error('Required parameter idMovie was null or undefined when calling postUsingPOST.');
         }

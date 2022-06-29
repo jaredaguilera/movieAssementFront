@@ -34,7 +34,7 @@ export class AppComponent implements OnInit{
     get f() { return this.assessmentMovieForm.controls; }
 
     onSubmit() {
-      this.billingService.postUsingPOST(this.f.idpelicula.value , this.f.idusuario.value, this.f.nota.value).subscribe(x => {
+      this.billingService.postUsingPOST(this.f['idpelicula'].value , this.f['idusuario'].value, this.f['nota'].value).subscribe(x => {
         console.log(x);
         this.ngOnInit();
       },
